@@ -1,17 +1,8 @@
-const fs = require('fs')
+const http = require('http');
 
-fs.readFile('user-data.txt', (err, data) => {
-    if (err){
-        console.log(err)
-        return;        
-    } 
-    console.log(data.toString())
-})
- 
-fs.writeFile('user-data.txt', 'username=Aleksandr', error => {
-    if(error){
-        console.log(error);
-    } else {
-        console.log("Success");
-    }
+const server = http.createServer((request, response) => {
+    response.write('hello there!');
+    response.end()
 });
+
+server.listen(3000);
